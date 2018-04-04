@@ -58,7 +58,7 @@ module VimeoMe2
         end
 
         def reset_request
-          @headers = { 'Content-Type' => 'application/json' }
+          @headers = {}
           @body = {}
           @query = {}
           set_auth_header(@token) unless @token.nil?
@@ -69,8 +69,6 @@ module VimeoMe2
         end
 
         def http_request
-          @body = @body.to_json if @headers['Content-Type'] = 'application/json'
-
           return {headers:@headers, body:@body, query:@query}
         end
 
