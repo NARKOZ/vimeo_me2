@@ -11,7 +11,7 @@ module VimeoMe2
         #check_user_quota!
         @ticket = get_upload_ticket
         uploaded_video = handle_upload
-        change_name(uploaded_video)
+        # change_name(uploaded_video)
         return uploaded_video
       end
 
@@ -47,7 +47,7 @@ module VimeoMe2
         # get an upload ticket which is neede for the upload
         def get_upload_ticket
           body = {:type => "streaming"}
-          post('/videos', body:body, code:201)
+          post('/videos?fields=ticket_id,complete_uri,upload_link_secure', body:body, code:201)
         end
 
         # start the pull upload
